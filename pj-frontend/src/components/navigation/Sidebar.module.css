@@ -20,13 +20,13 @@
     color: light-dark(
         var(--mantine-color-gray-7),
         var(--mantine-color-dark-0),
-    ) !important
+        ) !important;
+    
+    &:hover{
+        background-color:
+        light-dark(
+            var(--mantine-color-gray-2),
+            var(--mantine-color-dark-5),
+        ) !important
+    } 
 }
-
-.link:hover{
-    background-color:
-    light-dark(
-        var(--mantine-color-gray-2),
-        var(--mantine-color-dark-5),
-    ) !important
-} 
