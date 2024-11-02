@@ -1,11 +1,14 @@
-import { StrictMode } from 'react';
+import { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MantineProvider } from '@mantine/core';
 import { SignedOut, RedirectToSignIn, SignedIn, ClerkProvider } from '@clerk/clerk-react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout.tsx';
-import HomePage from './pages/HomePage.tsx';
 import '@mantine/core/styles.css';
+
+
+const HomePage = lazy(() => import('./pages/HomePage.tsx'));
+const CreateServerModal = lazy(() => import('./components/modals/CreateServerModal.tsx'));
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -32,7 +35,10 @@ const RouterComponent = () => {
             index
             element={
               <ProtectedRoute>
-                <HomePage />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <CreateServerModal />
+                  <HomePage />
+                </Suspense>
               </ProtectedRoute>
             }
           />
