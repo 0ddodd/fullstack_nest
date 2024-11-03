@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:12.1
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data  # 여기에서 로컬 디렉토리를 사용
+    networks:
+      - postgres-network
+    
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+
+networks:
+  postgres-network:  # 네트워크 정의
+
+# volumes:
+  # `my_postgres_data`와 같은 빈 볼륨 정의는 제거했습니다.
