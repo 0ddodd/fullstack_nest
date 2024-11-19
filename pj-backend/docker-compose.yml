@@ -12,7 +12,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data  # 여기에서 로컬 디렉토리를 사용
+      - ./postgres-data:/var/lib/postgresql/data
     networks:
       - postgres-network
     
@@ -23,7 +23,4 @@ services:
       - 6379:6379
 
 networks:
-  postgres-network:  # 네트워크 정의
-
-# volumes:
-  # `my_postgres_data`와 같은 빈 볼륨 정의는 제거했습니다.
+  postgres-network: 

@@ -50,7 +50,7 @@ export class Server {
     inviteCode: string;
 
     @Field()
-    profieId: number;
+    profileId: number;
 
     @Field(() => Profile, { nullable: true })
     profile: Profile;

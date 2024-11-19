@@ -1,5 +1,5 @@
 import { Field, ObjectType, registerEnumType } from "@nestjs/graphql";
-import { Server } from "http";
+import { Server } from "src/server/types";
 import { Profile } from "src/profile/profile.type";
 
 @ObjectType()
@@ -25,6 +25,9 @@ export class Member {
     
     @Field({ nullable: true })
     email: string;
+
+    @Field({ nullable: true })
+    name: string;
 
     @Field({ nullable: true })
     createdAt: string;

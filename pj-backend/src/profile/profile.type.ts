@@ -3,13 +3,15 @@ import { Member } from "src/member/member.types";
 import { Channel, Server } from "src/server/types";
 
 @ObjectType()
-
 export class Profile {
     @Field()
     id: number;
 
     @Field({nullable: true})
     email: string;
+
+    @Field({nullable: true})
+    name: string;
 
     @Field(()=>[Server], { nullable: 'itemsAndList' })
     servers: Server[];
@@ -26,7 +28,7 @@ export class Profile {
     @Field(() => Profile, { nullable: true})
     profile: Profile;
 
-    @Field(() => [Channel], { nullable: 'itemsAndList'})
+    @Field(() => [Member], { nullable: 'itemsAndList'})
     members: Member[];
 
     @Field(() => [Channel], { nullable: 'itemsAndList'})
