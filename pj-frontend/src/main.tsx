@@ -5,7 +5,8 @@ import { SignedOut, RedirectToSignIn, SignedIn, ClerkProvider } from '@clerk/cle
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout.tsx';
 import '@mantine/core/styles.css';
-
+import { ApolloProvider } from '@apollo/client';
+import client from './apolloClient.ts';
 
 const HomePage = lazy(() => import('./pages/HomePage.tsx'));
 const CreateServerModal = lazy(() => import('./components/modals/CreateServerModal.tsx'));
@@ -54,11 +55,13 @@ if (rootElement) {
   const root = createRoot(rootElement);
   
   root.render(
-    <MantineProvider>
-      <Router>
-        <RouterComponent />
-      </Router>
-    </MantineProvider>
+    <ApolloProvider client={client}>
+      <MantineProvider>
+        <Router>
+          <RouterComponent />
+        </Router>
+      </MantineProvider>
+    </ApolloProvider>
   );
 } else {
   console.error('루트 요소를 찾을 수 없습니다.');

@@ -20,4 +20,12 @@ export default defineConfig({
     cssCodeSplit: true,
     assetsInlineLimit: 4096,
   },
+  resolve: {
+    alias: {
+      'apollo-upload-client': 'apollo-upload-client/createUploadLink.mjs'
+    }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'other-heavily-used-libraries']
+  }
 })
